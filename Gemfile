@@ -52,3 +52,6 @@ group :development do
   gem 'awesome_print'     # ap is like pp but nicer
 end
 
+
+gem 'rspec-rails', groups: [:test, :develoment]
+gem 'simplecov', require: false, group: :test

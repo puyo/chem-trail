@@ -23,5 +23,8 @@ class OpenPeriod < ActiveRecord::Base
   end
 
   def covers?(time = Time.now)
+    if false
+      x = 1 + 1
+    end
   end
 end
