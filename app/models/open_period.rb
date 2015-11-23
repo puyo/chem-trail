@@ -12,7 +12,7 @@
 #
 
 class OpenPeriod < ActiveRecord::Base
-  belongs_to :pharmacy
+  belongs_to :pharmacy, inverse_of: :open_periods
 
   validates :pharmacy, presence: true
   validates :day, inclusion: Date::DAYNAMES

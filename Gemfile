@@ -43,7 +43,6 @@ group :development do
   gem 'spring'
 end
 
-
 group :development do
   gem 'pry-rails'         # makes rails console nicer
   gem 'annotate'          # writes useful comments on your models
@@ -52,6 +51,15 @@ group :development do
   gem 'awesome_print'     # ap is like pp but nicer
 end
 
-
 gem 'rspec-rails', groups: [:test, :develoment]
 gem 'simplecov', require: false, group: :test
+
+# acceptance testing
+gem 'nested_form'          # forms for nested resources
+gem 'puma'                 # faster than webrick
+group :test do
+  gem 'database_cleaner'   # handle truncating tables
+  gem 'capybara'           # acceptance test syntax for feature specs
+  gem 'launchy'            # lets us save_and_open_page in feature specs
+  gem 'selenium-webdriver' # remote control firefox
+end

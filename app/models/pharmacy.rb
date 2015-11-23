@@ -9,9 +9,11 @@
 #
 
 class Pharmacy < ActiveRecord::Base
-  has_many :open_periods
+  has_many :open_periods, inverse_of: :pharmacy
 
   validates :name, presence: true
+
+  accepts_nested_attributes_for :open_periods, allow_destroy: true
 
   def open_periods_formatted
   end

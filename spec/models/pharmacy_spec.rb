@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Pharmacy, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-
   describe '#open_periods_formatted' do
     it 'should format all open periods' do
       pharmacy = Pharmacy.new(name: "Balmain")

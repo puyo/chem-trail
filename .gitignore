@@ -14,3 +14,4 @@
 coverage
 .rspec
 .DS_Store
+.byebug_history

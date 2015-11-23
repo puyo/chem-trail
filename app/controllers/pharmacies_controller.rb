@@ -69,6 +69,6 @@ class PharmaciesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pharmacy_params
-      params.require(:pharmacy).permit(:name)
+      params.require(:pharmacy).permit(:name, open_periods_attributes: [:id, :day, :time_from, :time_to, :_destroy])
     end
 end

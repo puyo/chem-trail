@@ -5,5 +5,13 @@
   <%= @pharmacy.name %>
 </p>
 
+<p>
+<% @pharmacy.open_periods.each do |op| %>
+  <div class="open-period">
+    <%= op.attributes.values_at('day', 'time_from', 'time_to') %>
+  </div>
+<% end %>
+</p>
+
 <%= link_to 'Edit', edit_pharmacy_path(@pharmacy) %> |
 <%= link_to 'Back', pharmacies_path %>
