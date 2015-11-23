@@ -54,6 +54,11 @@ end
 gem 'rspec-rails', groups: [:test, :develoment]
 gem 'simplecov', require: false, group: :test
 
+# factories
+group :test do
+  gem 'factory_girl_rails'
+end
+
 # acceptance testing
 gem 'nested_form'          # forms for nested resources
 gem 'puma'                 # faster than webrick
