@@ -188,8 +188,11 @@ And add a test that uses the factory definitions to `spec/models/pharmacy_spec.r
 
   ```ruby
     it 'should use a factory' do
-      pharmacy = FactoryGirl.create(:pharmacy, :late_night_thursday)
-      expect(pharmacy.open_periods.count).to eq 1
+      pharmacy = FactoryGirl.create(:pharmacy, open_periods: [
+        FactoryGirl.build(:open_period, day: "Monday", time_from: '09:00'),
+        FactoryGirl.build(:open_period, day: "Tuesday", time_from: '09:00'),
+      ])
+      expect(pharmacy.open_periods_formatted).to eq "Monday: 9am - 5pm\nTuesday: 9am - 5pm"
     end
   ```
 
@@ -200,7 +203,8 @@ Run it:
   ```
 
 Notice how we didn't have to specify the `name` of the pharmacy when we created
-it in the test.
+it in the test. We could also set any defaults we liked for all attributes
+involved.
 
 ----
 
