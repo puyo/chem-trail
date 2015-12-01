@@ -326,16 +326,27 @@ Edit the file `spec/features/manage_pharmacies_spec.rb`:
   ```ruby
   require 'rails_helper'
 
-  RSpec.feature "Manage pharmacies", type: :feature do
-    it 'should do stuff' do
-      visit '/pharmacies'
-      click_on 'New Pharmacy'
-      fill_in 'Name', with: 'Ultimo Chemist Plus'
+  RSpec.feature "Manage pharmacy database",
+    """
+    In order to keep accurate information on pharmacy opening hours
+    As a pseudo junkie
+    I want to be able to read and update the information I keep on pharmacies
+    """, type: :feature do
+
+    background do
+      visit '/'   # type into address bar and press
+      click_on 'Manage Pharmacies'
+    end
+
+    scenario 'Create a pharmacy' do
+      click_on 'New Pharmacy'                       # click a link OR a button
+      fill_in 'Name', with: 'Ultimo Chemist Plus'   # type into a text field
       click_on 'Create Pharmacy'
-      expect(page).to have_content 'successfully created'
+      expect(page).to have_content 'Pharmacy was successfully created'
       click_on 'Back'
       expect(page).to have_content 'Ultimo Chemist Plus'
     end
+
   end
   ```
 
@@ -345,7 +356,8 @@ Run it:
   rspec spec/features/manage_pharmacies_spec.rb
   ```
 
-**Check**: Make sure it's passing. It should pass with the built in scaffolding.
+**Check**: Make sure it's passing. You may need to update the
+routes and add a welcome page or similar.
 
 ### Rails acceptance testing with JavaScript
 
@@ -353,9 +365,12 @@ Run it:
   require 'rails_helper'
 
   RSpec.feature "Manage pharmacies", type: :feature, js: true do
-    it 'should do stuff' do
-      visit '/pharmacies'
+    background do
+      visit '/'   # type into address bar and press
+      click_on 'Manage Pharmacies'
+    end
 
+    scenario 'Create a pharmacy' do
       click_on 'New Pharmacy'
       fill_in 'Name', with: 'Ultimo Chemist Plus'
 
